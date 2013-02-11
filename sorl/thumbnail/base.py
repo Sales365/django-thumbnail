@@ -1,4 +1,5 @@
 import re
+import os
 
 from sorl.thumbnail.conf import settings, defaults as default_settings
 from sorl.thumbnail.helpers import tokey, serialize
@@ -32,7 +33,8 @@ class ThumbnailBackend(object):
         ('orientation', 'THUMBNAIL_ORIENTATION'),
     )
 
-    file_extension = lambda inst, file_: str(file_).split('.')[-1].lower()
+    def file_extension(self, path):
+        return os.path.splitext(path)[1].lower()
 
     def _get_format(self, file_):
         file_extension = self.file_extension(file_)
