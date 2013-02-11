@@ -34,7 +34,7 @@ class ThumbnailBackend(object):
     )
 
     def file_extension(self, path):
-        return os.path.splitext(path)[1].lower()
+        return os.path.splitext(path)[1].lower()[1:]
 
     def _get_format(self, file_):
         file_extension = self.file_extension(file_)
